@@ -80,7 +80,7 @@ const Hero = ({ data }) => {
     </div>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [three, four, five];
 
   return (
     <HeroContainer>

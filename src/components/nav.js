@@ -45,7 +45,7 @@ const Logo = styled.div`
   ${mixins.flexCenter};
 `;
 const LogoLink = styled(Link)`
-  color: ${colors.green};
+  color: ${colors.newYellow};
   width: 42px;
   height: 42px;
   &:hover,
@@ -83,7 +83,7 @@ const HamburgerBox = styled.div`
   height: 24px;
 `;
 const HamburgerInner = styled.div`
-  background-color: ${colors.green};
+  background-color: ${colors.newYellow};
   position: absolute;
   width: ${theme.hamburgerWidth}px;
   height: 2px;
@@ -102,7 +102,7 @@ const HamburgerInner = styled.div`
   &:after {
     content: '';
     display: block;
-    background-color: ${colors.green};
+    background-color: ${colors.newYellow};
     position: absolute;
     left: auto;
     right: 0;
@@ -144,7 +144,7 @@ const NavListItem = styled.li`
   &:before {
     content: '0' counter(item) '.';
     text-align: right;
-    color: ${colors.green};
+    color: ${colors.newYellow};
     font-size: ${fontSizes.xsmall};
   }
 `;

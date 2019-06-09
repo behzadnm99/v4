@@ -14,6 +14,7 @@ const FlexContainer = styled.div`
   ${mixins.flexBetween};
   align-items: flex-start;
   ${media.tablet`display: block;`};
+  padding-bottom: 54px;
 `;
 const ContentContainer = styled.div`
   width: 60%;
@@ -40,7 +41,7 @@ const Skill = styled.li`
     content: '▹';
     position: absolute;
     left: 0;
-    color: ${colors.green};
+    color: ${colors.newYellow};
     font-size: ${fontSizes.small};
     line-height: 12px;
   }
@@ -65,7 +66,7 @@ const AvatarContainer = styled.a`
   width: 100%;
   position: relative;
   border-radius: ${theme.borderRadius};
-  background-color: ${colors.green};
+  background-color: ${colors.newYellow};
   margin-left: -20px;
   &:hover,
   &:focus {
@@ -98,7 +99,7 @@ const AvatarContainer = styled.a`
     mix-blend-mode: screen;
   }
   &:after {
-    border: 2px solid ${colors.green};
+    border: 2px solid ${colors.newYellow};
     top: 20px;
     left: 20px;
     z-index: -1;
@@ -113,20 +114,26 @@ const About = ({ data }) => {
 
   return (
     <AboutContainer id="about" ref={revealContainer}>
-      <Heading>{title}</Heading>
-      <FlexContainer>
-        <ContentContainer>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-          <SkillsContainer>
-            {skills && skills.map((skill, i) => <Skill key={i}>{skill}</Skill>)}
-          </SkillsContainer>
-        </ContentContainer>
-        <PicContainer>
-          <AvatarContainer href={github}>
-            <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-          </AvatarContainer>
-        </PicContainer>
-      </FlexContainer>
+      <Heading>About Us</Heading>
+      {data.map(item => (
+        <div>
+          {console.log(item)}
+          <FlexContainer>
+            <ContentContainer>
+              <div dangerouslySetInnerHTML={{ __html: item.node.html }} />
+              <SkillsContainer>
+                {item.node.frontmatter.skills &&
+                  item.node.frontmatter.skills.map((skill, i) => <Skill key={i}>{skill}</Skill>)}
+              </SkillsContainer>
+            </ContentContainer>
+            <PicContainer>
+              <AvatarContainer href={github}>
+                <Avatar fluid={item.node.frontmatter.avatar.childImageSharp.fluid} alt="Avatar" />
+              </AvatarContainer>
+            </PicContainer>
+          </FlexContainer>
+        </div>
+      ))}
     </AboutContainer>
   );
 };

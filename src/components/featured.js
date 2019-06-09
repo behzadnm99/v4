@@ -206,6 +206,7 @@ const Featured = ({ data }) => {
       <Heading ref={revealTitle}>Some Things I&apos;ve Built</Heading>
 
       <div>
+        {console.log(featuredProjects)}
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
